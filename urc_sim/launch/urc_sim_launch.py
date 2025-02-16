@@ -11,7 +11,7 @@ import xacro
 
 def generate_launch_description():
     pkgPath = FindPackageShare(package='urc_sim').find('urc_sim')
-    urdfModelPath= os.path.join(pkgPath, 'urdf/rover_v1.urdf')
+    urdfModelPath= os.path.join(pkgPath, 'urdf/rover_primal.xacro.urdf')
     
     
     #setting environment varible so gazebo can find my mesh files
