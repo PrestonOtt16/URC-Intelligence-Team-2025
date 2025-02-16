@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+	<world name="desert world">
+		<!-- A global light source -->
+		<include>
+			<uri>model://sun</uri>
+		</include>
+
+		<!-- A ground plane -->
+		<include>
+			<uri>model://ground_plane</uri>
+		</include>
+
+        <!-- Our custom model -->
+		<include>
+			<!--<uri>/home/preston/urc_navigation/src/urc_sim/models/desert</uri>-->
+			<uri>package:///models/desert</uri>
+			<pose>0.0 0.0 -2.50 0 0 0</pose>
+		</include>
+		
+		<!--aruco tag post 0-->
+		<include>
+			<!--<uri>/home/preston/urc_navigation/src/urc_sim/models/arucotag1</uri>-->
+			<uri>package:///models/arucotag1</uri>
+			<pose>5.0 5.0 1.0 0 0 0</pose>
+		</include>
+		
+		
+		<!-- Increasing ambient light in the scene of gazebo simulation -->
+		<scene>
+			<ambient>0.8 0.8 0.8 1.0</ambient>
+			<background>0.83 0.57 0.180 0.10</background>
+			<shadows>true</shadows>
+		</scene>
+
+        
+	</world>
+</sdf>

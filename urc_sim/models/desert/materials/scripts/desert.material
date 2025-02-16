@@ -1,0 +1,14 @@
+material Desert/Texture
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture redrock.jpg
+        scale 1.0 1.0
+      }
+    }
+  }
+}

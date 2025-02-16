@@ -1,0 +1,864 @@
+<?xml version="1.6"?>
+
+<robot name="rover_v1" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!--grey color-->
+<material name="grey">
+  <color rgba="0.25 0.25 0.25 1"/>
+</material>
+
+<!--blue color-->
+<material name="blue">
+  <color rgba="0.35 0.35 0.75 1"/>
+</material>
+
+<!--yellow color-->
+<material name="yellow">
+  <color rgba="0.960 0.880 0.085 1"/>
+</material>
+
+
+  <!-- world coordinate -->
+  <link name="world">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
+	
+  <!--front aluminum extrusion,mass,moment-of-inertia -->
+  <link name="front-aluminum-extrusion">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.1814"/>
+      <inertia ixx="0.00242" ixy="0.0" ixz="0.0" iyy="0.0000121" iyz="0.0" izz="0.00242"/>
+    </inertial>
+  </link>
+  
+  <!--front left bracket,mass, moment of inertia-->
+  <link name="front-left-bracket">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+Super+Corner+Bracket.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.0135 0.0 -0.0135" rpy="0 0 3.145"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+Super+Corner+Bracket.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.0135 0.0 -0.0135" rpy="0 0 3.145"/>
+    </collision>
+    
+    <inertial>
+      <origin xyz="-0.011 -0.022 0.0" rpy="0 0 0"/>
+      <mass value="0.00745"/>
+      <inertia ixx="0.00000156" ixy="0.0" ixz="0.0" iyy="0.00000156" iyz="0.0" izz="0.000002404"/>
+    </inertial>
+  </link>
+  
+  <!--front right bracket, mass, moment of inertia-->
+  <link name="front-right-bracket">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+Super+Corner+Bracket.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.0135 0.0 0.0135" rpy="0 3.145 0"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+Super+Corner+Bracket.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.0135 0.0 0.0135" rpy="0 3.145 0"/>
+    </collision>
+    
+    <inertial>
+      <mass value="0.00745"/>
+      <inertia ixx="0.00000156" ixy="0.0" ixz="0.0" iyy="0.00000156" iyz="0.0" izz="0.000002404"/>
+    </inertial>
+  </link>
+  
+  
+  <!--left aluminum extrusion,mass,moment of inertia-->
+  <link name="left-aluminum-extrusion">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+800mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.35 -0.0135 0.0" rpy="0 0 1.57"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+800mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="-0.35 -0.0135 0.0" rpy="0 0.0 1.57"/>
+    </collision>
+    
+    <inertial>
+      <mass value="0.3629"/>
+      <inertia ixx="0.0000242" ixy="0.0" ixz="0.0" iyy="0.00020563" iyz="0.0" izz="0.0000242"/>
+    </inertial>
+  </link>
+  
+  
+  <!--right aluminum extrusion, mass, moment of inertia-->
+  <link name="right-aluminum-extrusion">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+800mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.35 0.0135 0.0" rpy="0 0 1.57"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+800mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="-0.35 0.0135 0.0" rpy="0 0.0 1.57"/>
+    </collision>
+    
+    <inertial>
+      <mass value="0.3629"/>
+      <inertia ixx="0.0000242" ixy="0.0" ixz="0.0" iyy="0.00020563" iyz="0.0" izz="0.0000242"/>
+    </inertial>
+  </link>
+  
+  
+  <!--middle aluminum extrusion,mass,moment of inertia -->
+  <link name="middle-aluminum-extrusion">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.1814"/>
+      <inertia ixx="0.002427" ixy="0.0" ixz="0.0" iyy="0.000012093" iyz="0.0" izz="0.000012093"/>
+    </inertial>
+  </link>
+  
+  <!--left pillow bearing, mass, moment of inertia-->
+  <link name="left-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Pillow+Bearking+XIKE+K004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="0 3.145 0"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Pillow+Bearking+XIKE+K004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="0 3.145 0"/>
+    </collision>
+    
+    <inertial>
+      <mass value="1.54"/>
+      <inertia ixx="0.0004255" ixy="0.0" ixz="0.0" iyy="0.00165755" iyz="0.0" izz="0.00133467"/>
+    </inertial>
+  </link>
+  
+  <!--right pillow bearing,mass, moment of inertia-->
+  <link name="right-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Pillow+Bearking+XIKE+K004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="0 3.145 0"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Pillow+Bearking+XIKE+K004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="0 3.145 0"/>
+    </collision>
+    
+    <inertial>
+      <mass value="1.54"/>
+      <inertia ixx="0.0004255" ixy="0.0" ixz="0.0" iyy="0.00165755" iyz="0.0" izz="0.00133467"/>
+    </inertial>
+  </link>
+  
+  <!--20mm left shaft,mass, moment of inertia-->
+  <link name="left-shaft">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/20mm+shaft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.150 0" rpy="0 0 0"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/20mm+shaft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.150 0" rpy="0 0 0"/>
+    </collision>
+    
+    <inertial>
+      <mass value="0.74065"/>
+      <inertia ixx="0.00555561" ixy="0.0" ixz="0.0" iyy="0.0000014813" iyz="0.0" izz="0.00555561"/>
+    </inertial>
+  </link>
+  
+  <!--20mm right shaft,mass,moment of inertia-->
+  <link name="right-shaft">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/20mm+shaft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.150 0" rpy="0 0 0"/>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/20mm+shaft.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.150 0" rpy="0 0 0"/>
+    </collision>
+    
+    <inertial>
+      <mass value="0.74065"/>
+      <inertia ixx="0.00555561" ixy="0.0" ixz="0.0" iyy="0.0000014813" iyz="0.0" izz="0.00555561"/>
+    </inertial>
+  </link>
+  
+  <!-- lower middle aluminum extrusion,mass,moment of inertia -->
+  <link name="lower-middle-aluminum-extrusion">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+400mm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 -0.2572 0" rpy="0 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.1814"/>
+      <inertia ixx="0.002427" ixy="0.0" ixz="0.0" iyy="0.000012093" iyz="0.0" izz="0.002427"/>
+    </inertial>
+  </link>
+  
+  <!-- left middle T Bracket,mass, moment of inertia -->
+  <link name="left-middle-TBracket">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+T_Bracket_60x60x20.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0 0 0" rpy="3.145 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+T_Bracket_60x60x20.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0 0 0" rpy="3.145 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0046"/>
+      <inertia ixx="0.00000140" ixy="0.0" ixz="0.0" iyy="0.000003852" iyz="0.0" izz="0.000005213"/>
+    </inertial>
+  </link>
+  
+  <!-- right middle T Bracket,mass, moment of inertia -->
+  <link name="right-middle-TBracket">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+T_Bracket_60x60x20.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0 0 0" rpy="3.145 0 3.145"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020+T_Bracket_60x60x20.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0 0 0" rpy="3.145 0 3.145"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0046"/>
+      <inertia ixx="0.00000140" ixy="0.0" ixz="0.0" iyy="0.000003852" iyz="0.0" izz="0.000005213"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- Susupension Bar Left ,mass, moment of inertia-->
+  <link name="Suspension-Bar-Left">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Suspension-Bar.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Suspension-Bar.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.52785"/>
+      <inertia ixx="0.00004948" ixy="0.0" ixz="0.0" iyy="0.02044916" iyz="0.0" izz="0.20452134"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- Susupension Bar Right,mass,moment of inertia -->
+  <link name="Suspension-Bar-Right">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Suspension-Bar.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Suspension-Bar.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0 0 0" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.58725"/>
+      <inertia ixx="0.00004948" ixy="0.0" ixz="0.0" iyy="0.2044916" iyz="0.0" izz="0.20452134"/>
+    </inertial>
+  </link>
+  
+  <!-- 2020 wheel extrusion left ,mass,moment of inertia -->
+  <link name="2020-wheel-back-extrusion-left">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.762 0 0.762" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.762 0 0.762" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0454"/>
+      <inertia ixx="0.0000030267" ixy="0.0" ixz="0.0" iyy="0.0000393467" iyz="0.0" izz="0.0000393467"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- 2020 wheel front extrusion left,mass,moment of inertia  -->
+  <link name="2020-wheel-front-extrusion-left">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.762 0 0.762" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.762 0 0.762" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0454"/>
+      <inertia ixx="0.0000030267" ixy="0.0" ixz="0.0" iyy="0.0000393467" iyz="0.0" izz="0.0000393467"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- 2020 wheel front extrusion right,mass,moment of inertia  -->
+  <link name="2020-wheel-front-extrusion-right">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.762 0 0.762" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.762 0 0.762" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0454"/>
+      <inertia ixx="0.0000030267" ixy="0.0" ixz="0.0" iyy="0.0000393467" iyz="0.0" izz="0.0000393467"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- 2020 wheel back extrusion right,mass,moment of inertia  -->
+  <link name="2020-wheel-back-extrusion-right">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.762 0 0.762" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/2020-extrusion-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.762 0 0.762" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0454"/>
+      <inertia ixx="0.0000030267" ixy="0.0" ixz="0.0" iyy="0.0000393467" iyz="0.0" izz="0.0000393467"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- back left pillow bearing,mass,moment of inertia  -->
+  <link name="back-left-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.7890 0 0.788" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.7890 0 0.788" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0907"/>
+      <inertia ixx="0.000011707" ixy="0.0" ixz="0.0" iyy="0.000043188" iyz="0.0" izz="0.00003637825"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- front left pillow bearing ,mass, moment of inertia -->
+  <link name="front-left-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.7910 0 0.788" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.7910 0 0.788" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0907"/>
+      <inertia ixx="0.000011707" ixy="0.0" ixz="0.0" iyy="0.000043188" iyz="0.0" izz="0.00003637825"/>
+    </inertial>
+  </link>
+  
+  
+   <!-- front right pillow bearing,mass, moment of inertia  -->
+  <link name="front-right-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.776 0 0.776" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="-0.776 0 0.776" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0907"/>
+      <inertia ixx="0.000011707" ixy="0.0" ixz="0.0" iyy="0.000043188" iyz="0.0" izz="0.00003637825"/>
+    </inertial>
+  </link>
+  
+  <!-- back right pillow bearing,mass,moment of inertia  -->
+  <link name="back-right-pillow-bearing">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.776 0 0.776" rpy="1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/wheel-bearing-left.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="0.776 0 0.776" rpy="1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="0.0907"/>
+      <inertia ixx="0.000011707" ixy="0.0" ixz="0.0" iyy="0.000043188" iyz="0.0" izz="0.00003637825"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- front-left-wheel,moment of inertia  -->
+  <link name="front-left-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="-0.791 0 -0.788" rpy="-1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="-0.791 0 -0.788" rpy="-1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0.0" ixz="0.0" iyy="0.01692535" iyz="0.0" izz="0.0151393"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- back-left-wheel,mass,moment of inertia  -->
+  <link name="back-left-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="-0.791 0 -0.788" rpy="-1.570 0 0"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="-0.791 0 -0.788" rpy="-1.570 0 0"/>
+    </collision>
+		
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0.0" ixz="0.0" iyy="0.01692535" iyz="0.0" izz="0.0151393"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- front-right-wheel,mass,moment of inertia  -->
+  <link name="front-right-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="0.791 -0.25 0.788" rpy="1.570 0 3.145"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="0.791 -0.25 0.788" rpy="1.570 0 3.145"/>
+    </collision>
+		
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0.0" ixz="0.0" iyy="0.01692535" iyz="0.0" izz="0.0151393"/>
+    </inertial>
+  </link>
+  
+  
+  <!-- back-right-wheel,mass,moment of inertia  -->
+  <link name="back-right-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="0.791 -0.25 0.788" rpy="1.570 0 3.145"/>
+    </visual>
+		
+    <collision>
+      <geometry>
+        <mesh filename="package://urc_sim/meshes/Honeycomb-wheel-right.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+      <material name="yellow"/>
+      <origin xyz="0.791 -0.25 0.788" rpy="1.570 0 3.145"/>
+    </collision>
+		
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0.0" ixz="0.0" iyy="0.01692535" iyz="0.0" izz="0.0151393"/>
+    </inertial>
+  </link>
+  
+  
+  
+  <joint name="world-fae" type="fixed">
+    <parent link="world"/>
+    <child link="front-aluminum-extrusion"/>
+    <origin xyz="0 0 0" rpy="0 0 1.570"/>
+  </joint>
+  
+   <joint name="fae-flb" type="fixed">
+    <parent link="front-aluminum-extrusion"/>
+    <child link="front-left-bracket"/>
+    <origin xyz="0 0.22 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="fae-frb" type="fixed">
+    <parent link="front-aluminum-extrusion"/>
+    <child link="front-right-bracket"/>
+    <origin xyz="0 -0.22 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="flb-lae" type="fixed">
+    <parent link="front-left-bracket"/>
+    <child link="left-aluminum-extrusion"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="frb-rae" type="fixed">
+    <parent link="front-right-bracket"/>
+    <child link="right-aluminum-extrusion"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="lae-mae" type="fixed">
+    <parent link="left-aluminum-extrusion"/>
+    <child link="middle-aluminum-extrusion"/>
+    <origin xyz="-0.380 -0.22 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="lae-lpb" type="fixed">
+    <parent link="left-aluminum-extrusion"/>
+    <child link="left-pillow-bearing"/>
+    <origin xyz="-0.427 -0.0135 -0.010" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="rae-rpb" type="fixed">
+    <parent link="right-aluminum-extrusion"/>
+    <child link="right-pillow-bearing"/>
+    <origin xyz="-0.427 0.0135 -0.010" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="lpb-ls" type="continuous">
+    <parent link="left-pillow-bearing"/>
+    <child link="left-shaft"/>
+    <origin xyz="0 -0.040 -0.0265" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="rpb-rs" type="continuous">
+    <parent link="right-pillow-bearing"/>
+    <child link="right-shaft"/>
+    <origin xyz="0 0.040 -0.0265" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="lae-lmae" type="fixed">
+    <parent link="left-aluminum-extrusion"/>
+    <child link="lower-middle-aluminum-extrusion"/>
+    <origin xyz="-0.60 -0.22 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="lae-lmt" type="fixed">
+    <parent link="left-aluminum-extrusion"/>
+    <child link="left-middle-TBracket"/>
+    <origin xyz="-0.61 -0.003 0.013" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="rae-rmt" type="fixed">
+    <parent link="right-aluminum-extrusion"/>
+    <child link="right-middle-TBracket"/>
+    <origin xyz="-0.59 0.003 0.013" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="ls-lsb" type="continuous">
+    <parent link="left-shaft"/>
+    <child link="Suspension-Bar-Left"/>
+    <origin xyz="0 0.1025 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="rs-rsb" type="continuous">
+    <parent link="right-shaft"/>
+    <child link="Suspension-Bar-Right"/>
+    <origin xyz="0 -0.0875 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="sbl-wble" type="fixed">
+    <parent link="Suspension-Bar-Left"/>
+    <child link="2020-wheel-back-extrusion-left"/>
+    <origin xyz="-0.762 0 -0.762" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="sbl-wfle" type="fixed">
+    <parent link="Suspension-Bar-Left"/>
+    <child link="2020-wheel-front-extrusion-left"/>
+    <origin xyz="0.762 0 -0.762" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="sbr-wfre" type="fixed">
+    <parent link="Suspension-Bar-Right"/>
+    <child link="2020-wheel-front-extrusion-right"/>
+    <origin xyz="0.762 0 -0.762" rpy="0 0 0"/>
+  </joint>
+  
+   <joint name="sbr-wbre" type="fixed">
+    <parent link="Suspension-Bar-Right"/>
+    <child link="2020-wheel-back-extrusion-right"/>
+    <origin xyz="-0.762 0 -0.762" rpy="0 0 0"/>
+  </joint>
+  
+   <joint name="wble-blpb" type="fixed">
+    <parent link="2020-wheel-back-extrusion-left"/>
+    <child link="back-left-pillow-bearing"/>
+    <origin xyz="-0.0270 0 -0.0260" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="wfle-flpb" type="fixed">
+    <parent link="2020-wheel-front-extrusion-left"/>
+    <child link="front-left-pillow-bearing"/>
+    <origin xyz="0.0290 0 -0.0260" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="wfre-frpb" type="fixed">
+    <parent link="2020-wheel-front-extrusion-right"/>
+    <child link="front-right-pillow-bearing"/>
+    <origin xyz="0.014 0 -0.014" rpy="0 0 0"/>
+  </joint>
+  
+   <joint name="wbre-brpb" type="fixed">
+    <parent link="2020-wheel-back-extrusion-right"/>
+    <child link="back-right-pillow-bearing"/>
+    <origin xyz="-0.014 0 -0.014" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="flpb-flw" type="continuous">
+    <parent link="front-left-pillow-bearing"/>
+    <child link="front-left-wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="blpb-flw" type="continuous">
+    <parent link="back-left-pillow-bearing"/>
+    <child link="back-left-wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="frpb-frw" type="continuous">
+    <parent link="front-right-pillow-bearing"/>
+    <child link="front-right-wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <joint name="brpb-brw" type="continuous">
+    <parent link="back-right-pillow-bearing"/>
+    <child link="back-right-wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>  
+  
+</robot>
+

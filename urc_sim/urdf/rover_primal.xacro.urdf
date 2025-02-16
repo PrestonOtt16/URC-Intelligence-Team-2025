@@ -1,0 +1,547 @@
+<?xml version="1.0"?>
+
+
+<!--robot tag-->
+<robot name="rover_primal" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  
+  <!--world -frame-->
+  <!--
+  <link name="world">
+  </link>
+  -->
+  
+  
+  <!--frame link-->
+  <link name="frame">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size ="0.8 0.4 0.02"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size ="0.8 0.4 0.02"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="10.919"/>
+      <inertia ixx="0.146" ixy ="0.0" ixz = "0.0" iyy="0.5827" iyz ="0.0" izz="0.727"/>
+    </inertial>
+  </link>
+  
+  
+  <!--suspension bar fleft-->
+  <link name="suspension-bar-fleft">
+    <visual>
+      <origin xyz="0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="0.70"/>
+      <inertia ixx="0.11016" ixy="0" ixz="0" iyy="0.11016" iyz ="0" izz="0.0000467"/>
+    </inertial>
+  </link>
+  
+  <!--suspension bar bleft-->
+  <link name="suspension-bar-bleft">
+    <visual>
+      <origin xyz="-0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="-0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="0.70"/>
+      <inertia ixx="0.11016" ixy="0" ixz="0" iyy="0.11016" iyz ="0" izz="0.0000467"/>
+    </inertial>
+  </link>
+  
+  <!--suspension bar fright-->
+  <link name="suspension-bar-fright">
+    <visual>
+      <origin xyz="0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="0.70"/>
+      <inertia ixx="0.11016" ixy="0" ixz="0" iyy="0.11016" iyz ="0" izz="0.0000467"/>
+    </inertial>
+  </link>
+  
+  <!--suspension bar bright-->
+  <link name="suspension-bar-bright">
+    <visual>
+      <origin xyz="-0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="-0.3233 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6466 0.02 0.02"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="0.70"/>
+      <inertia ixx="0.11016" ixy="0" ixz="0" iyy="0.11016" iyz ="0" izz="0.0000467"/>
+    </inertial>
+  </link>
+  
+  <!--front left wheel-->
+  <link name="front-left-wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0" ixz="0" iyy="0.016925" iyz="0" izz="0.015139"/>
+    </inertial>
+  </link>
+  
+  <!--back left wheel-->
+  <link name="back-left-wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0" ixz="0" iyy="0.016925" iyz="0" izz="0.015139"/>
+    </inertial>
+  </link>
+  
+  <!--front right wheel-->
+  <link name="front-right-wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0" ixz="0" iyy="0.016925" iyz="0" izz="0.015139"/>
+    </inertial>
+  </link>
+  
+  
+  <!--back right wheel-->
+  <link name="back-right-wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.13" length="0.20"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="2.003"/>
+      <inertia ixx="0.015139" ixy="0" ixz="0" iyy="0.016925" iyz="0" izz="0.015139"/>
+    </inertial>
+  </link>
+  
+  
+  <!--camera link-->
+  <link name="cam">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value = "0.01"/>
+      <inertia ixx="0.000041" ixy="0.0" ixz="0.0" iyy="0.000041" iyz="0.0" izz="0.000041"/>
+    </inertial>
+  </link>
+  
+  
+  <!--world to frame joint-->
+  <!--
+  <joint name="world-frame" type="fixed">
+    <parent link="world"/>
+    <child link="frame"/>
+  </joint>
+  -->
+  
+  <!--frame to suspension bar fleft joint-->
+  <joint name="frame-sus-bar-fleft" type="continuous">
+    <parent link="frame"/>
+    <child link="suspension-bar-fleft"/>
+    <origin xyz="0 0.21 0" rpy="0 0.78553 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="10.0" damping="0.1" /> 
+  </joint>
+  
+  <!--frame to suspension bar left joint-->
+  <joint name="frame-sus-bar-left" type="fixed">
+    <parent link="suspension-bar-fleft"/>
+    <child link="suspension-bar-bleft"/>
+    <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+  </joint>
+  
+  <!--frame to suspension bar fright joint-->
+  <joint name="frame-sus-bar-fright" type="continuous">
+    <parent link="frame"/>
+    <child link="suspension-bar-fright"/>
+    <origin xyz="0 -0.21 0" rpy="0 0.78553 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="10.0" damping="0.1" /> 
+  </joint>
+  
+  <!--frame to suspension bar right joint-->
+  <joint name="frame-sus-bar-right" type="fixed">
+    <parent link="suspension-bar-fright"/>
+    <child link="suspension-bar-bright"/>
+    <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+  </joint>
+  
+  <!--suspension bar left and front left wheel-->
+  <joint name="sus-bar-fleft-flwheel" type="continuous">
+    <parent link="suspension-bar-fleft"/>
+    <child link="front-left-wheel"/>
+    <origin xyz="0.6466 0.11 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="0.1" damping="0.0" /> 
+  </joint>
+  
+  <!--suspension bar left and back left wheel-->
+  <joint name="sus-bar-fleft-blwheel" type="continuous">
+    <parent link="suspension-bar-bleft"/>
+    <child link="back-left-wheel"/>
+    <origin xyz="-0.6466 0.11 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="0.1" damping="0.00" /> 
+  </joint>
+  
+  <!--suspension bar left and front right wheel-->
+  <joint name="sus-bar-fright-frwheel" type="continuous">
+    <parent link="suspension-bar-fright"/>
+    <child link="front-right-wheel"/>
+    <origin xyz="0.6466 -0.11 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="0.1" damping="0.0" /> 
+  </joint>
+  
+  <!--suspension bar right and back right wheel-->
+  <joint name="sus-bar-fright-brwheel" type="continuous">
+    <parent link="suspension-bar-bright"/>
+    <child link="back-right-wheel"/>
+    <origin xyz="-0.6466 -0.11 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="10.0"/>
+    <dynamics friction="0.1" damping="0.0" /> 
+  </joint>
+  
+  <!--camera link too frame-->
+  <joint name="cam-frame" type="prismatic">
+    <parent link="frame"/>
+    <child link = "cam"/>
+    <origin xyz="0.3975 0 0.035" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="10.0" lower="0.0" upper="0.0"/>
+  </joint>
+  
+  
+  <!--#PID controllers all initially has kp = 100, ki = 1, kd = 10-->
+  <ros2_control name="GazeboSystem1" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="sus-bar-fright-frwheel">
+
+      <param name="eff_kp">10</param>
+      <param name="eff_kd">0</param>
+      <param name="eff_ki">0</param>
+      <param name="eff_max_integral_error">10000</param>
+      
+      <!--effort_pid command interface-->
+      <command_interface name="effort"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+      
+    </joint>
+  </ros2_control>
+  
+  
+  <!--#PID controllers all initially has kp = 100, ki = 1, kd = 10-->
+  <ros2_control name="GazeboSystem2" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="sus-bar-fright-brwheel">
+
+      <param name="eff_kp">10</param>
+      <param name="eff_kd">0</param>
+      <param name="eff_ki">0</param>
+      <param name="eff_max_integral_error">10000</param>
+      
+      <!--effort_pid command interface-->
+      <command_interface name="effort"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+      
+    </joint>
+  </ros2_control>
+  
+  <!--#PID controllers all initially has kp = 100, ki = 1, kd = 10-->
+  <ros2_control name="GazeboSystem3" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="sus-bar-fleft-flwheel">
+
+      <param name="eff_kp">10</param>
+      <param name="eff_kd">0</param>
+      <param name="eff_ki">0</param>
+      <param name="eff_max_integral_error">10000</param>
+      
+      <!--effort_pid command interface-->
+      <command_interface name="effort"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+      
+    </joint>
+  </ros2_control>
+  
+  
+  <!--#PID controllers all initially has kp = 100, ki = 1, kd = 10-->
+  <ros2_control name="GazeboSystem4" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="sus-bar-fleft-blwheel">
+
+      <param name="eff_kp">10</param>
+      <param name="eff_kd">0</param>
+      <param name="eff_ki">0</param>
+      <param name="eff_max_integral_error">10000</param>
+      
+      <!--effort_pid command interface-->
+      <command_interface name="effort"/>
+
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+      
+    </joint>
+  </ros2_control>
+  
+  
+  <!--gazebo tags for links-->
+  <gazebo reference="frame">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <min_depth>0.0010</min_depth>
+    <kp>1e5</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="suspension-bar-fleft">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.0010</min_depth>
+    <kp>1e5</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="suspension-bar-bleft">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.0010</min_depth>
+    <kp>1e5</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="suspension-bar-fright">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.0010</min_depth>
+    <kp>1e5</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="suspension-bar-bright">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e5</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="front-left-wheel">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e7</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="back-left-wheel">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e7</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="front-right-wheel">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e7</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="back-right-wheel">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e7</kp>
+    <kd>1</kd>
+  </gazebo>
+  
+  <gazebo reference="cam">
+    <material>Gazebo/Red</material>
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e7</kp>
+    <kd>1</kd>
+    <!-- camera plugin for cam link-->
+    <sensor type="camera" name="camera">
+      <update_rate>60</update_rate>
+      <visualize>true</visualize>
+      <camera name="camera">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+              <!-- Noise is sampled independently per pixel on each frame.
+                   That pixel's noise value is added to each of its color
+                   channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <ros>
+          <!-- TODO(louise) Remapping not working due to https://github.com/ros-perception/image_common/issues/93 -->
+          <remapping>image_raw:=image_raw</remapping>
+          <remapping>camera_info:=camera_info</remapping>
+        </ros>
+        <!-- camera_name>omit so it defaults to sensor name</camera_name-->
+        <!-- frame_name>omit so it defaults to link name</frame_name-->
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <!--gazebo tag for yaml parameter file-->
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+       <parameters>$(find urc_sim)/config/rover_primal_fr.yaml</parameters>
+       <parameters>$(find urc_sim)/config/rover_primal_br.yaml</parameters>
+       <parameters>$(find urc_sim)/config/rover_primal_fl.yaml</parameters>
+       <parameters>$(find urc_sim)/config/rover_primal_bl.yaml</parameters>
+    </plugin>
+  </gazebo>
+  
+</robot>

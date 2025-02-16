@@ -1,0 +1,14 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 30  # Hz
+
+    bl_wheel_effort_controller:
+      type: effort_controllers/JointGroupEffortController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+bl_wheel_effort_controller:
+  ros__parameters:
+    joints:
+      - sus-bar-fleft-blwheel

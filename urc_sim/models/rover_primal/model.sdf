@@ -1,0 +1,610 @@
+<sdf version='1.7'>
+  <model name='rover_primal'>
+    <link name='frame'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>10.919</mass>
+        <inertia>
+          <ixx>0.146</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5827</iyy>
+          <iyz>0</iyz>
+          <izz>0.727</izz>
+        </inertia>
+      </inertial>
+      <collision name='frame_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.4 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='frame_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.4 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+      <min_depth>0.0010</min_depth>
+    </link>
+    <joint name='frame-imu' type='prismatic'>
+      <pose relative_to='frame'>0 0 0.01 0 -0 0</pose>
+      <parent>frame</parent>
+      <child>imu_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='imu_link'>
+      <pose relative_to='frame-imu'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <sensor name='imu_sensor' type='imu'>
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <imu>
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+
+    </link>
+    <joint name='frame-sus-bar-fleft' type='revolute'>
+      <pose relative_to='frame'>0 0.21 0 0 0.78553 0</pose>
+      <parent>frame</parent>
+      <child>suspension-bar-fleft</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='suspension-bar-fleft'>
+      <pose relative_to='frame-sus-bar-fleft'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1.4</mass>
+        <inertia>
+          <ixx>0.110207</ixx>
+          <ixy>0</ixy>
+          <ixz>6.7425e-18</ixz>
+          <iyy>0.22032</iyy>
+          <iyz>0</iyz>
+          <izz>0.110207</izz>
+        </inertia>
+      </inertial>
+      <collision name='suspension-bar-fleft_collision'>
+        <pose>0.3233 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='suspension-bar-fleft_fixed_joint_lump__suspension-bar-bleft_collision_1'>
+        <pose>1e-06 0 -0.3233 0 -1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='suspension-bar-fleft_visual'>
+        <pose>0.3233 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='suspension-bar-fleft_fixed_joint_lump__suspension-bar-bleft_visual_1'>
+        <pose>1e-06 0 -0.3233 0 -1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+      <min_depth>0.0010</min_depth>
+      <min_depth>0.0010</min_depth>
+    </link>
+    <joint name='sus-bar-fleft-blwheel' type='revolute'>
+      <pose relative_to='suspension-bar-fleft'>2e-06 0.11 -0.6466 3.14159 -1.57079 3.14159</pose>
+      <parent>suspension-bar-fleft</parent>
+      <child>back-left-wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='back-left-wheel'>
+      <pose relative_to='sus-bar-fleft-blwheel'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2.003</mass>
+        <inertia>
+          <ixx>0.015139</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.016925</iyy>
+          <iyz>0</iyz>
+          <izz>0.015139</izz>
+        </inertia>
+      </inertial>
+      <collision name='back-left-wheel_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='back-left-wheel_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <min_depth>0.001</min_depth>
+    </link>
+    <joint name='sus-bar-fleft-flwheel' type='revolute'>
+      <pose relative_to='suspension-bar-fleft'>0.6466 0.11 0 0 -0 0</pose>
+      <parent>suspension-bar-fleft</parent>
+      <child>front-left-wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front-left-wheel'>
+      <pose relative_to='sus-bar-fleft-flwheel'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2.003</mass>
+        <inertia>
+          <ixx>0.015139</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.016925</iyy>
+          <iyz>0</iyz>
+          <izz>0.015139</izz>
+        </inertia>
+      </inertial>
+      <collision name='front-left-wheel_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front-left-wheel_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <min_depth>0.001</min_depth>
+    </link>
+    <joint name='frame-sus-bar-fright' type='revolute'>
+      <pose relative_to='frame'>0 -0.21 0 0 0.78553 0</pose>
+      <parent>frame</parent>
+      <child>suspension-bar-fright</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='suspension-bar-fright'>
+      <pose relative_to='frame-sus-bar-fright'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1.4</mass>
+        <inertia>
+          <ixx>0.110207</ixx>
+          <ixy>0</ixy>
+          <ixz>6.7425e-18</ixz>
+          <iyy>0.22032</iyy>
+          <iyz>0</iyz>
+          <izz>0.110207</izz>
+        </inertia>
+      </inertial>
+      <collision name='suspension-bar-fright_collision'>
+        <pose>0.3233 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='suspension-bar-fright_fixed_joint_lump__suspension-bar-bright_collision_1'>
+        <pose>1e-06 0 -0.3233 0 -1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>100000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='suspension-bar-fright_visual'>
+        <pose>0.3233 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='suspension-bar-fright_fixed_joint_lump__suspension-bar-bright_visual_1'>
+        <pose>1e-06 0 -0.3233 0 -1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.6466 0.02 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+      <min_depth>0.0010</min_depth>
+      <min_depth>0.001</min_depth>
+    </link>
+    <joint name='sus-bar-fright-brwheel' type='revolute'>
+      <pose relative_to='suspension-bar-fright'>2e-06 -0.11 -0.6466 3.14159 -1.57079 3.14159</pose>
+      <parent>suspension-bar-fright</parent>
+      <child>back-right-wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='back-right-wheel'>
+      <pose relative_to='sus-bar-fright-brwheel'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2.003</mass>
+        <inertia>
+          <ixx>0.015139</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.016925</iyy>
+          <iyz>0</iyz>
+          <izz>0.015139</izz>
+        </inertia>
+      </inertial>
+      <collision name='back-right-wheel_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='back-right-wheel_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <min_depth>0.001</min_depth>
+    </link>
+    <joint name='sus-bar-fright-frwheel' type='revolute'>
+      <pose relative_to='suspension-bar-fright'>0.6466 -0.11 0 0 -0 0</pose>
+      <parent>suspension-bar-fright</parent>
+      <child>front-right-wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front-right-wheel'>
+      <pose relative_to='sus-bar-fright-frwheel'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>2.003</mass>
+        <inertia>
+          <ixx>0.015139</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.016925</iyy>
+          <iyz>0</iyz>
+          <izz>0.015139</izz>
+        </inertia>
+      </inertial>
+      <collision name='front-right-wheel_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front-right-wheel_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.13</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <min_depth>0.001</min_depth>
+    </link>
+    <static>0</static>
+    <plugin name='ardupilot_plugin' filename='libArduPilotPlugin.so'>
+      <fdm_port_in>9002</fdm_port_in>
+      <fdm_port_out>9003</fdm_port_out>
+      <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+      <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
+      <imuName>imu_sensor</imuName>
+      <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+      <control channel='0'>
+        <type>VELOCITY</type>
+        <jointName>sus-bar-fleft-flwheel</jointName>
+        <multiplier>838</multiplier>
+        <offset>0</offset>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+      </control>
+      <control channel='1'>
+        <type>VELOCITY</type>
+        <jointName>sus-bar-fleft-blwheel</jointName>
+        <multiplier>838</multiplier>
+        <offset>0</offset>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+      </control>
+      <control channel='2'>
+        <type>VELOCITY</type>
+        <jointName>sus-bar-fright-frwheel</jointName>
+        <multiplier>838</multiplier>
+        <offset>0</offset>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+      </control>
+      <control channel='3'>
+        <type>VELOCITY</type>
+        <jointName>sus-bar-fright-brwheel</jointName>
+        <multiplier>838</multiplier>
+        <offset>0</offset>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+      </control>
+    </plugin>
+  </model>
+</sdf>

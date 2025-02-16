@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot name="block" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="demo_block">
+    <!--visual box-->
+    <visual>
+      <geometry>
+        <box size = "0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <!--collision-->
+    <collision>
+      <geometry>
+        <box size = "0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <!--inertial-->
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.00167" ixy="0.0" ixz="0.0" iyy="0.00167" iyz="0.0" izz="0.00167"/>
+    </inertial>
+  </link>
+  
+  <!-- adding gazebo tag too add physics parameters-->
+  <!-- adjust (kd,kp) too adjust (ERP) and (CFM) -->
+  <!-- (kp = 1.0, kd = 4.0) gives a compressable object-->
+  <!-- (kp = 1e4, kd = 1.0) gives a rigid incompressable object-->
+  <gazebo reference="demo_block">
+    <material>Gazebo/Orange</material>
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <min_depth>0.001</min_depth>
+    <kp>1e4</kp>
+    <kd>1.0</kd>
+  </gazebo>
+  
+</robot>
