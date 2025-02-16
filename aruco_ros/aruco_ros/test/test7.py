@@ -4,7 +4,8 @@ import numpy
 
 
 #Setting up a aruco tag detector object
-d1 = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_5X5_1000)
+#University Rover Challenge 2025 uses 4x4_50 Aruco Tags
+d1 = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_4X4_50)
 param = cv.aruco.DetectorParameters()
 detector = cv.aruco.ArucoDetector(d1, param)
 
