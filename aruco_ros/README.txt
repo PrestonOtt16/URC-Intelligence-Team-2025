@@ -6,4 +6,4 @@ Contact: preston.ott@my.utsa.edu
 
 Versions: opencv version 4.11.0, ROS2 Humble Hawksbille, Ubuntu 22.04 Jammy Jellyfish, Python 3.10.12
 
-Dependencies: aruco_node ROS2 package requires, std_msgs, geometry_msgs, cv_bridge, aruco_ros_msgs, sensor_msgs too be built using colon build system
+Dependencies: aruco_ros ROS2 package requires, std_msgs, geometry_msgs, cv_bridge, aruco_ros_msgs, sensor_msgs too be built using colon build system
