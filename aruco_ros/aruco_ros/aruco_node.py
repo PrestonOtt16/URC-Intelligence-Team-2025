@@ -40,7 +40,8 @@ class aruco_node(Node):
         self.bridge = CvBridge() # Initialize CvBridge
         
         #Creating a cv aruco detector object too detect aruco tags in image
-        d1 = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
+        #University Rover Challenge 2025 uses 4x4_50 Aruco Tags
+        d1 = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
         param = cv2.aruco.DetectorParameters()
         self.detector = cv2.aruco.ArucoDetector(d1, param)
         
